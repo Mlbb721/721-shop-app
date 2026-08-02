@@ -905,9 +905,36 @@ to{
 
 }
 
+/* ---------- page-to-page loading transition ---------- */
+.page-loader{
+  position:fixed; inset:0; z-index:99999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:16px;
+  background:var(--bg);
+  opacity:1;
+  transition:opacity .32s ease;
+}
+.page-loader.hide{ opacity:0; pointer-events:none; }
+.page-loader .loader-ring{
+  width:46px; height:46px; border-radius:50%;
+  border:3px solid var(--gold-dim);
+  border-top-color:var(--gold);
+  animation:loaderSpin .8s linear infinite;
+}
+.page-loader .loader-text{
+  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px;
+  color:var(--muted); text-transform:uppercase;
+}
+@keyframes loaderSpin{ to{ transform:rotate(360deg); } }
+
 </style>
 </head>
 <body>
+
+<div class="page-loader" id="pageLoader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">721 Shop</div>
+</div>
 
 <!-- ============ VIEW: CATALOG ============ -->
 <div class="view active" id="view-catalog">
@@ -952,7 +979,7 @@ to{
   </div>
     
     <div class="cat-grid" style="grid-template-columns:1fr 1fr;">
-      <div class="cat-card cat-card-premium" onclick="openPremiumView()">
+      <div class="cat-card cat-card-premium" onclick="goToRentApp()">
         <div class="cat-top-badge" style="background:var(--gold); color:#0A0A0D;">VIP</div>
         <img class="cat-icon-img" src="un10n.jpg" alt="721 Premium" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span class="cat-icon" style="display:none;">👑</span>
         <div class="cat-name">Akkaunt Rent</div>
@@ -1691,6 +1718,25 @@ function showToast(msg){
 }
 
 initApp();
+
+/* ---------- page-to-page loading transition ---------- */
+(function(){
+  const loader = document.getElementById('pageLoader');
+  // Kirishda: sahifa tayyor bo'lgach loaderni yumshoq yo'qotamiz
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{ loader.classList.add('hide'); }, 350);
+  });
+})();
+
+function navigateWithLoader(url){
+  const loader = document.getElementById('pageLoader');
+  loader.classList.remove('hide');
+  setTimeout(()=>{ window.location.href = url; }, 400);
+}
+
+function goToRentApp(){
+  navigateWithLoader('akkrent-index.html');
+}
 
 function openNewsChannel(){
 

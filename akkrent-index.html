@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Abdulloh</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+    --cyan-angle:0deg;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    background:none;
+    font:inherit;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        #0B0B0F 0%,
+        #121212 50%,
+        #090909 100%
+    );
+
+    font-family:'Poppins',sans-serif;
+
+    touch-action:pan-y;
+
+    -webkit-user-select:none;
+    user-select:none;
+
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+
+    padding-bottom:110px;
+}
+
+/*==================================================
+THE AUREUM ECLIPSE (GOLD LUXURY MOBILE FRAME)
+==================================================*/
+
+
+@property --cyan-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.aureum-container {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 420px;
+    height: 100px;          /* Kartaning bo'yi */
+    margin: -70px auto 20px;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+
+    margin-top:120px;
+    top: -59px;
+}
+
+/* 1. Orqa fondagi Volumetrik Oltin Nur (Breathing Gold Back-Glow) */
+.aureum-glow{
+    position:absolute;
+    inset:-18px;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(41,227,242,.45) 0%,
+        rgba(18,191,216,.25) 35%,
+        rgba(18,191,216,.10) 55%,
+        transparent 75%
+    );
+
+    filter:blur(42px);
+    opacity:.45;
+
+    pointer-events:none;
+    z-index:-1;
+
+    animation:cyanBreath 4s ease-in-out infinite alternate;
+}
+
+/* 2. Main U10N Card */
+.aureum-card{
+    position:relative;
+    width:100%;
+    height:100%;
+
+    border-radius:24px;
+    overflow:hidden;
+    z-index:1;
+
+    background:#090909;
+
+    border:1px solid transparent;
+
+    background-image:
+        linear-gradient(#090909,#090909),
+
+    conic-gradient(
+        from var(--cyan-angle),
+
+        transparent 45%,
+
+        #24d8ff,
+        #6ef5ff,
+        #ffffff,
+        #6ef5ff,
+        #24d8ff,
+
+        transparent 100%
+    );
+
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
+
+    animation:rotateCyanLaser 5s linear infinite;
+
+    will-change:transform,background-image;
+
+    transition:
+    transform .35s cubic-bezier(.175,.885,.32,1.275),
+    box-shadow .35s ease;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.03),
+        0 0 15px rgba(36,216,255,.12),
+        0 0 35px rgba(36,216,255,.08);
+}
+
+.aureum-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.05),
+        0 0 20px rgba(36,216,255,.25),
+        0 0 45px rgba(36,216,255,.18),
+        0 0 70px rgba(36,216,255,.08);
+
+}
+
+.aureum-card h1{
+    
+    color:#ffffff;
+    
+    position: absolute;
+    
+    top: 35px;
+    left: 95px;
+    
+    font-size:20px;
+    
+    font-weight:700;
+    
+}
+
+/*==================================================
+ANIMATIONS (GPU ACCELERATED)
+==================================================*/
+
+/* Neon border aylanishi */
+@keyframes rotateCyanLaser {
+    to {
+        --cyan-angle: 360deg;
+    }
+}
+
+/* Card glow nafas olishi */
+@keyframes cyanBreath {
+
+    0%{
+        transform:scale(.94);
+        opacity:.18;
+        filter:blur(38px);
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:scale(1.08);
+        opacity:.65;
+        filter:blur(55px);
+    }
+
+}
+
+/* Online status pulse */
+@keyframes cyanStatusPulse {
+
+    0%{
+        transform:scale(.92);
+        box-shadow:
+            0 0 0 0 rgba(36,216,255,.65),
+            0 0 10px rgba(36,216,255,.45);
+    }
+
+    70%{
+        transform:scale(1);
+        box-shadow:
+            0 0 0 10px rgba(36,216,255,0),
+            0 0 18px rgba(36,216,255,.15);
+    }
+
+    100%{
+        transform:scale(.92);
+        box-shadow:
+            0 0 0 0 rgba(36,216,255,0),
+            0 0 10px rgba(36,216,255,.35);
+    }
+
+}
+
+.profile-avatar{
+    width:75px;
+    height:75px;
+    padding:3px;
+
+    position: absolute;
+
+    top: 10px;
+    left: 10px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+    135deg,
+    #24d8ff,
+    #6ef5ff,
+    #ffffff
+    );
+
+    box-shadow:
+       0 0 16px rgba(36,216,255,.45);
+
+    overflow:hidden;
+}
+
+.profile-avatar img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+}
+.top-brand{
+    width: calc(100% - 32px);
+    max-width: 420px;
+
+    margin: 25px auto 15px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circle{
+
+    width:52px;
+    height:52px;
+
+    background:none;
+
+    border:none;
+
+    border-radius:0;
+
+    padding:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:none;
+    position:relative;
+    top:30px;      /* logoni 8px pastga tushiradi */
+}
+
+.logo-circle img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    border-radius:0;
+}
+
+.top-brand h1{
+    color:#ffffff;
+
+    position: relative;
+
+    top: 30px;
+    left: 5px;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    text-shadow:
+       0 0 10px rgba(36,216,255,.35);
+}
+
+/*==================================================
+aksel tepa qism
+==================================================*/
+
+.header-container{
+
+    position:fixed;
+
+    top:-58px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:calc(100% - 32px);
+    max-width:420px;
+
+    height:110px;
+
+    z-index:99999;
+
+    background:transparent;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* 1. Orqa fondagi Volumetrik Oltin Nur (Breathing Gold Back-Glow) */
+.header-glow {
+    position: absolute;
+    inset: -15px;
+
+    background: radial-gradient(
+        circle at center,
+        rgba(41,227,242,.45) 0%,
+        rgba(18,191,216,.25) 35%,
+        rgba(18,191,216,.10) 55%,
+        transparent 75%
+    );
+
+    filter: blur(42px);
+    opacity: .45;
+    z-index: -1;
+    pointer-events: none;
+
+    animation: cyanBreath 4s ease-in-out infinite alternate;
+}
+
+/* 2. Asosiy Obsidian-Oltin Karta (Obsidian-Gold Armor) */
+.header-card {
+    position: relative;
+    width: 100%;
+    height: 100%;           /* Container bo'yini oladi */
+
+    border-radius: 24px;
+    overflow: hidden;
+    background:#090909;
+    z-index: 1;
+
+    /* Dynamic Gold Border */
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(#090909,#090909),
+        conic-gradient(
+        from var(--cyan-angle),
+
+        transparent 45%,
+
+        #24d8ff,
+        #6ef5ff,
+        #ffffff,
+        #6ef5ff,
+        #24d8ff,
+
+        transparent 100%
+    );
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    animation: rotateCyanLaser 5s linear infinite;
+
+    will-change: transform, background-image;
+
+    transition:
+    transform .35s cubic-bezier(.175,.885,.32,1.275),
+    box-shadow .35s ease;
+
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.03),
+      0 0 15px rgba(36,216,255,.12),
+      0 0 35px rgba(36,216,255,.08);
+}
+
+.banner-container {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 420px;
+    height: 205px;
+    margin: 5px auto 20px;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateY(-10px);
+
+    top: -59px;
+}
+
+/* 1. Orqa fondagi Volumetrik Oltin Nur (Breathing Gold Back-Glow) */
+.banner-glow {
+    position: absolute;
+    inset: -15px;
+    /* Issiq tilla va to'q kahrabo ranglarining uyg'unligi */
+    background: radial-gradient(
+    circle at center,
+    rgba(41,227,242,.45) 0%,
+    rgba(18,191,216,.25) 35%,
+    rgba(18,191,216,.10) 55%,
+    transparent 75%
+    );
+    filter: blur(42px);
+    opacity: .45;
+    z-index: -1;
+    pointer-events: none;
+    animation: cyanBreath 4s ease-in-out infinite alternate;
+}
+
+/* 2. Asosiy Obsidian-Oltin Karta (Obsidian-Gold Armor) */
+.banner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;           /* Container bo'yini oladi */
+
+    border-radius: 24px;
+    overflow: hidden;
+    background:#090909;
+    z-index: 1;
+
+    /* Dynamic Gold Border */
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(#090909,#090909),
+        conic-gradient(
+        from var(--cyan-angle),
+
+        transparent 45%,
+
+        #24d8ff,
+        #6ef5ff,
+        #ffffff,
+        #6ef5ff,
+        #24d8ff,
+
+        transparent 100%
+    );
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    animation: rotateCyanLaser 5s linear infinite;
+
+    will-change: transform, background-image;
+
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275);
+}
+
+.topup-container {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 180px;
+    height: 100px;          /* Kartaning bo'yi */
+    margin: 5px auto 20px;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+
+    position: absolute;
+
+    top: 410px;
+    left: 195px;
+}
+
+/* 1. Orqa fondagi Volumetrik Oltin Nur (Breathing Gold Back-Glow) */
+.topup-glow {
+    position: absolute;
+    inset: -15px;
+    /* Issiq tilla va to'q kahrabo ranglarining uyg'unligi */
+    background: radial-gradient(
+       circle at center,
+       rgba(41,227,242,.45) 0%,
+       rgba(18,191,216,.25) 35%,
+       rgba(18,191,216,.10) 55%,
+       transparent 75%
+    );
+    filter: blur(42px);
+    opacity: .45;
+    z-index: -1;
+    pointer-events: none;
+    animation: cyanBreath 4s ease-in-out infinite alternate;
+}
+
+/* 2. Asosiy Obsidian-Oltin Karta (Obsidian-Gold Armor) */
+.topup-card {
+    position: relative;
+    width: 100%;
+    height: 100%;           /* Container bo'yini oladi */
+
+    border-radius: 24px;
+    overflow: hidden;
+    background:#090909;
+    z-index: 1;
+
+    /* Dynamic Gold Border */
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(#090909,#090909),
+        conic-gradient(
+        from var(--cyan-angle),
+
+        transparent 45%,
+
+        #24d8ff,
+        #6ef5ff,
+        #ffffff,
+        #6ef5ff,
+        #24d8ff,
+
+        transparent 100%
+    );
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    animation: rotateCyanLaser 5s linear infinite;
+
+    will-change: transform, background-image;
+
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275);
+}
+
+.rent-container {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 175px;
+    height: 100px;          /* Kartaning bo'yi */
+    margin: 5px auto 20px;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+
+    position: absolute;
+
+    top: 410px;
+    left: 16px;
+}
+
+/* 1. Orqa fondagi Volumetrik Oltin Nur (Breathing Gold Back-Glow) */
+.rent-glow {
+    position: absolute;
+    inset: -15px;
+    /* Issiq tilla va to'q kahrabo ranglarining uyg'unligi */
+    background: radial-gradient(
+    circle at center,
+    rgba(41,227,242,.45) 0%,
+    rgba(18,191,216,.25) 35%,
+    rgba(18,191,216,.10) 55%,
+    transparent 75%
+    );
+    filter: blur(42px);
+    opacity: .45;
+    z-index: -1;
+    pointer-events: none;
+    animation: cyanBreath 4s ease-in-out infinite alternate;
+}
+
+.quick-actions {
+    width: calc(100% - 32px);
+    max-width: 420px;
+    margin: 10px auto 20px;
+
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+
+    position: relative;
+    transform: translateY(-79px)
+   }
+
+.quick-actions .rent-container,
+.quick-actions .topup-container {
+    position: relative !important;
+
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: auto;
+    flex: 1;
+    max-width: none;
+    height: 100px;
+
+    margin: 0;
+}
+
+.banner-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.banner-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.banner-track img {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Indikatorlar */
+.banner-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    z-index: 10;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(36,216,255,.25);
+
+    transition: all 0.3s ease;
+}
+
+/* Aktiv indikator — nuqtadan chiziqchaga aylanadi */
+.dot.active {
+    width: 22px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+      90deg,
+      #24d8ff,
+      #6ef5ff,
+      #ffffff
+);
+
+    box-shadow: 0 0 12px rgba(36,216,255,.45);
+}
+
+.rent-container,
+.topup-container {
+    text-decoration: none;
+    color: inherit;
+}
+
+.rent-card,
+.topup-card {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 15px;
+    gap: 12px;
+
+    cursor: pointer;
+}
+
+.topup-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.topup-icon img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+}
+
+.topup-text h3 {
+    margin: 0;
+
+    font-weight: 700;
+
+    color:#ffffff;
+    font-size: 20px;
+}
+
+.topup-text p {
+    margin-top: 4px;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.rent-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.rent-text h3 {
+    margin: 0;
+
+    font-weight: 700;
+
+    color:#ffffff;
+    font-size: 12px;
+}
+
+.rent-text p {
+    margin-top: 4px;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================
+   POPULAR ACCOUNTS
+============================ */
+
+.account-list{
+
+    width:calc(100% - 20px);
+
+    max-width:420px;
+
+    margin:60px auto 110px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.account-list::-webkit-scrollbar{
+    display:none;
+}
+
+.account-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    background:#101010;
+    border:1px solid transparent;
+    background-image:
+        linear-gradient(#101010,#101010),
+        conic-gradient(
+            from var(--cyan-angle),
+            transparent 40%,
+            #24d8ff,
+            #6ef5ff,
+            #ffffff,
+            #6ef5ff,
+            #24d8ff,
+            transparent 100%
+        );
+
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
+    animation:rotateCyanLaser 5s linear infinite;
+    transition:.35s;
+    box-shadow:
+        0 0 12px rgba(36,216,255,.10);
+
+        width:100%;
+        flex:none;
+
+        scroll-snap-align:start;
+
+        width:100%;
+        max-width:420px;
+        margin:0 auto;
+
+        border-radius:20px;
+}
+
+/*=========================
+    RENT PAGE
+=========================*/
+
+.rent-card{
+    position: relative;
+    width:100%;
+    height:100%;
+    border-radius:24px;
+    overflow:hidden;
+    background:#090909;
+
+    border:1px solid transparent;
+
+    background-image:
+        linear-gradient(#090909,#090909),
+        conic-gradient(
+            from var(--cyan-angle),
+            transparent 45%,
+            #24d8ff,
+            #6ef5ff,
+            #ffffff,
+            #6ef5ff,
+            #24d8ff,
+            transparent 100%
+        );
+
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
+
+    animation:rotateCyanLaser 5s linear infinite;
+
+    transition:transform .3s cubic-bezier(.175,.885,.32,1.275);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.03),
+        0 0 15px rgba(36,216,255,.12),
+        0 0 35px rgba(36,216,255,.08);
+}
+
+.rent-dots span{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#777;
+
+}
+
+.rent-dots span.active{
+
+    width:24px;
+
+    border-radius:30px;
+
+    background:#24d8ff;
+
+}
+
+.info-card .title{
+
+    display:block;
+
+    color:#7d8899;
+
+    font-size:11px;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.info-card .value{
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.rent-button{
+
+    width:calc(100% - 36px);
+
+    margin:0 18px 18px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:linear-gradient(90deg,#00c8ff,#3af0ff);
+
+    color:#07131a;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.top-badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:5px 10px;
+    border-radius:12px;
+    background:rgba(18,18,18,.88);
+    border:1px solid rgba(36,216,255,.18);
+    backdrop-filter:blur(14px);
+    color:#ffffff;
+    font-size:10px;
+    font-weight:500;
+    z-index:10;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.35);
+}
+
+.account-image{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.skin-count{
+
+    display:inline-flex;
+
+    align-items:center;
+    width:31%;
+    height:30px;
+    padding:0 14px;
+    border-radius:30px;
+    background:rgba(36,216,255,.12);
+    border:1px solid rgba(36,216,255,.25);
+    color:#6ef5ff;
+    font-size:12px;
+    font-weight:600;
+    position:relative;
+    top:15px;
+
+}
+
+.rank-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.rank-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.rank-info img{
+    width:22px;
+    height:22px;
+    object-fit:contain;
+}
+
+.rank-name{
+    color:#fff;
+    font-weight:600;
+    font-size:15px;
+}
+
+.rank-star{
+    color:#FFD54F;
+    font-weight:700;
+    font-size:20px;    /* oldin 15-16px bo'lsa kattalashadi */
+    position:relative;
+    top:1px;          /* sal tepaga ko'taradi */
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin:8px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.stat{
+    padding:8px 4px;
+    text-align:center;
+}
+
+.stat:not(:last-child){
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+}
+
+.stat h3{
+
+    color:#fff;
+
+    font-size:18px;
+
+}
+
+.stat span{
+
+    color:#9aa3ad;
+
+    font-size:11px;
+
+}
+
+.price{
+    text-align:center;
+    margin:10px 0;
+    color:#fff;
+    font-size:22px;
+    font-weight:700;
+}
+
+.price span{
+    font-size:16px;
+    color:#8fa3b2;
+}
+
+.rent-btn{
+    width:100%;
+    height:42px;          /* 52 → 46 */
+    border-radius:14px;   /* 16 → 14 */
+    border:none;
+    cursor:pointer;
+    font-size:14px;       /* qo'sh */
+    font-weight:700;
+    color:#061014;
+    background:linear-gradient(
+        135deg,
+        #24d8ff,
+        #6ef5ff,
+        #ffffff
+    );
+    transition:.35s;
+}
+
+.rent-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 22px rgba(36,216,255,.45);
+
+}
+
+.rank-badge{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:38px;
+    margin:10px 0 14px;
+    padding:0 14px;
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+}
+
+.rank-badge:hover{
+
+    border-color:rgba(36,216,255,.30);
+
+    box-shadow:
+        0 0 18px rgba(36,216,255,.15);
+
+}
+
+.account-header{
+    position:relative;
+    overflow:hidden;
+}
+
+.account-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:120px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.15) 30%,
+        rgba(0,0,0,.45) 60%,
+        rgba(9,9,9,.92) 100%
+    );
+
+    pointer-events:none;
+
+    z-index:2;
+
+}
+
+.header-overlay{
+
+    position:absolute;
+
+    left:16px;
+    right:16px;
+
+    bottom:-10px;   /* oldin 12px edi */
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    z-index:3;
+
+}
+
+.image-fade{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:140px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.15) 25%,
+        rgba(0,0,0,.45) 55%,
+        rgba(9,9,9,.75) 80%,
+        #101010 100%
+    );
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
+
+.view-all{
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:#24d8ff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.view-all span{
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.view-all:hover{
+
+    color:#6ef5ff;
+}
+
+.view-all:hover span{
+
+    transform:translateX(4px);
+}
+
+.account-content{
+    padding:14px;
+}
+
+/* ===========================
+   BOTTOM NAVIGATION
+=========================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    bottom:-14px;
+
+    width:calc(100% - 32px);
+    max-width:420px;
+
+    height:78px;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:#090909;
+
+    border:1px solid transparent;
+
+    background-image:
+        linear-gradient(#090909,#090909),
+        conic-gradient(
+            from var(--cyan-angle),
+
+            transparent 45%,
+
+            #24d8ff,
+            #6ef5ff,
+            #ffffff,
+            #6ef5ff,
+            #24d8ff,
+
+            transparent 100%
+        );
+
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
+
+    animation:rotateCyanLaser 5s linear infinite;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.03),
+        0 0 15px rgba(36,216,255,.10),
+        0 0 35px rgba(36,216,255,.06);
+
+    z-index:9999;
+}
+
+.nav-item{
+
+    flex:1;
+
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    color:#8fa3b2;
+
+    font-size:11px;
+    font-weight:600;
+
+    text-decoration:none;
+
+    text-shadow:
+        0 0 4px rgba(36,216,255,.08);
+
+    transition:.25s;
+}
+
+.nav-item img{
+
+    width:26px;
+    height:26px;
+
+    object-fit:contain;
+
+    opacity:1;
+
+    filter:
+        brightness(1.35)
+        saturate(1.15)
+        drop-shadow(0 0 4px rgba(110,245,255,.45))
+        drop-shadow(0 0 8px rgba(110,245,255,.30))
+        drop-shadow(0 0 14px rgba(110,245,255,.18));
+
+    transition:.25s;
+}
+
+.nav-item.active{
+
+    color:#6ef5ff;
+
+    text-shadow:
+        0 0 8px rgba(36,216,255,.35);
+}
+
+.nav-item.active img{
+
+    filter:
+        brightness(1.6)
+        saturate(1.4)
+        drop-shadow(0 0 8px rgba(110,245,255,.75))
+        drop-shadow(0 0 16px rgba(110,245,255,.55))
+        drop-shadow(0 0 28px rgba(110,245,255,.35));
+}
+
+.nav-item.active span{
+
+    color:#6ef5ff;
+
+    text-shadow:
+        0 0 8px rgba(110,245,255,.75),
+        0 0 18px rgba(110,245,255,.45);
+}
+
+.nav-item span{
+
+    color:#d9faff;
+
+    text-shadow:
+        0 0 4px rgba(110,245,255,.30),
+        0 0 10px rgba(110,245,255,.18);
+
+    transition:.25s;
+}
+
+.rent-container{
+
+    cursor:default;
+
+    user-select:none;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* ===========================
+   PROFIL SAHIFASI
+=========================== */
+
+#view-profile{ display:none; }
+#view-rent{ display:none; }
+
+.profile-menu{
+    width:calc(100% - 32px);
+    max-width:420px;
+    margin:16px auto;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transform: translateY(-67px);
+}
+
+.profile-menu-item{
+    position:relative;
+    width:100%;
+    height:60px;
+    border-radius:18px;
+    overflow:hidden;
+    background:#101010;
+    border:1px solid transparent;
+    background-image:
+        linear-gradient(#101010,#101010),
+        conic-gradient(
+            from var(--cyan-angle),
+            transparent 45%,
+            #24d8ff,
+            #6ef5ff,
+            #ffffff,
+            #6ef5ff,
+            #24d8ff,
+            transparent 100%
+        );
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
+    animation:rotateCyanLaser 5s linear infinite;
+    box-shadow:0 0 12px rgba(36,216,255,.10);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.profile-menu-item:active{
+    transform:scale(0.97);
+    box-shadow:0 0 20px rgba(36,216,255,.30);
+}
+
+.profile-menu-item span.label{
+    color:#ffffff;
+    font-size:15px;
+    font-weight:600;
+    text-shadow:0 0 6px rgba(36,216,255,.20);    
+}
+
+.profile-menu-item span.chev{
+    color:#6ef5ff;
+    font-size:18px;
+    text-shadow:0 0 8px rgba(110,245,255,.45);
+}
+
+/*=================================================
+            RENTAL PAGE
+=================================================*/
+
+.rental-page{
+
+    position:relative;
+
+    width:calc(100% - 24px);
+
+    max-width:420px;
+
+    margin:95px auto 110px;
+
+}
+
+.rental-card{
+
+position:relative;
+
+background:#11151c;
+
+border-radius:24px;
+
+overflow:hidden;
+
+border:1px solid transparent;
+
+background-image:
+    linear-gradient(#11151c,#11151c),
+    conic-gradient(
+        from var(--cyan-angle),
+
+        transparent 45%,
+
+        #24d8ff,
+        #6ef5ff,
+        #ffffff,
+        #6ef5ff,
+        #24d8ff,
+
+        transparent 100%
+    );
+
+background-origin:border-box;
+background-clip:padding-box,border-box;
+
+animation:rotateCyanLaser 5s linear infinite;
+
+transition:
+    transform .35s cubic-bezier(.175,.885,.32,1.275),
+    box-shadow .35s ease;
+
+box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.03),
+    0 0 15px rgba(36,216,255,.12),
+    0 0 35px rgba(36,216,255,.08);
+
+}
+
+.rental-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+}
+
+.rental-id{
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.rental-status{
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.rental-status.available{
+
+    background:rgba(0,255,120,.15);
+
+    color:#45ff90;
+
+    border:1px solid rgba(0,255,120,.35);
+
+}
+
+.rental-track{
+    display:flex;
+    height:100%;
+    transition:transform .45s ease;
+    will-change:transform;
+}
+
+.rental-track img{
+    min-width:100%;
+    width:100%;
+    height:100%;
+    flex-shrink:0;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+.rental-slider::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:70px;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.70),
+        transparent
+    );
+
+    pointer-events:none;
+
+}
+
+.rental-dots{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:12px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:7px;
+
+}
+
+.rental-dots span{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#5b6470;
+
+}
+
+.rental-dots span.active{
+
+    width:24px;
+
+    border-radius:20px;
+
+    background:#24d8ff;
+
+}
+
+.rental-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+    padding:20px 18px 18px;
+
+}
+
+.rental-item{
+
+    background:#1a2029;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:18px;
+
+    padding:16px;
+
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid rgba(36,216,255,.08);
+
+    transition:.35s;
+
+    box-shadow:
+
+        inset 0 0 0 1px rgba(255,255,255,.02),
+
+        0 0 12px rgba(36,216,255,.05);
+
+        
+
+}
+
+.rental-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(110,245,255,.9),
+        transparent
+    );
+
+}
+
+.rental-item::after{
+
+   content:"";
+
+   position:absolute;
+
+   width:80px;
+   height:80px;
+
+   left:-30px;
+   top:-30px;
+
+   border-radius:50%;
+
+    background:
+       radial-gradient(
+       rgba(36,216,255,.18),
+       transparent 70%
+    );
+
+}
+
+.rental-item small{
+
+   display:block;
+
+   color:#7f8996;
+
+   font-size:11px;
+
+   margin-bottom:14px;
+
+   text-transform:uppercase;
+
+   letter-spacing:.8px;
+
+}
+
+.rental-item small::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:40px;
+
+    height:2px;
+
+    border-radius:5px;
+
+    background:linear-gradient(
+        90deg,
+        #24d8ff,
+        transparent
+    );
+
+}
+
+.rental-item strong{
+
+   display:block;
+
+   color:#ffffff;
+
+   font-size:18px;
+
+   font-weight:700;
+
+   line-height:1.3;
+
+}
+
+.rental-btn{
+
+    width:calc(100% - 36px);
+
+    height:54px;
+
+    margin:0 18px 18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        90deg,
+        #24d8ff,
+        #6ef5ff
+    );
+
+    color:#061014;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.rental-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 22px rgba(36,216,255,.40);
+
+}
+
+
+.rental-page::before{
+
+    content:"";
+
+    position:absolute;
+ 
+    inset:-18px;
+
+    background:
+        radial-gradient(
+        circle at center,
+        rgba(36,216,255,.28) 0%,
+        rgba(36,216,255,.10) 40%,
+        transparent 75%
+    );
+
+    filter:blur(40px);
+
+    opacity:.45;
+
+    z-index:-1;
+
+    animation:cyanBreath 4s ease-in-out infinite alternate;
+
+}
+
+.rental-slider{
+    position:relative;
+    overflow:hidden;
+    height:220px;   /* 220 o'rniga */
+    border-radius:18px;
+    background:#0d1118;
+
+    margin:0 18px;
+    height:180px;
+    border-radius:18px;
+    overflow:hidden;    
+
+    border:1px solid rgba(36,216,255,.15);
+
+    box-shadow:
+        0 0 15px rgba(36,216,255,.08);
+}
+
+.rental-track img{
+
+    width:100%;
+
+    height:280px;   /* 220 o'rniga */
+
+    flex-shrink:0;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.image-viewer{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.96);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+    z-index:99999;
+}
+
+.image-viewer.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.image-viewer img{
+
+   max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    cursor:grab;
+    transform-origin:center center;
+    transition:transform .15s;
+    user-select:none;
+    -webkit-user-drag:none;
+ }
+
+.viewer-close{
+    position:absolute;
+    top:18px;
+    right:22px;
+    font-size:40px;
+    color:#fff;
+    cursor:pointer;
+    z-index:2;
+}
+
+/* ---------- page-to-page loading transition ---------- */
+.page-loader{
+  position:fixed; inset:0; z-index:999999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:16px;
+  background:#0B0B0F;
+  opacity:1;
+  transition:opacity .32s ease;
+}
+.page-loader.hide{ opacity:0; pointer-events:none; }
+.page-loader .loader-ring{
+  width:46px; height:46px; border-radius:50%;
+  border:3px solid rgba(36,216,255,.18);
+  border-top-color:#24d8ff;
+  animation:loaderSpin .8s linear infinite;
+}
+.page-loader .loader-text{
+  font-family:'Poppins',sans-serif; font-size:12px; letter-spacing:1px;
+  color:#8a8a93; text-transform:uppercase;
+}
+@keyframes loaderSpin{ to{ transform:rotate(360deg); } }
+
+</style>
+   
+</head>
+
+<body>
+
+<div class="page-loader" id="pageLoader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Akkaunt Rent</div>
+</div>
+    
+    <!--  爱 | Aksel' - Akkaun Rent -->
+<div class="header-container">
+    <div class="header-glow"></div>
+<div class="header-card">
+
+    <div class="top-brand">
+
+        <div class="logo-circle">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+    
+        <h1>UN10N - ACCOUNT RENTALS</h1>
+    
+    </div>
+
+    
+</div>
+</div>
+
+    <!-- THE AUREUM ECLIPSE CARD (GOLD LUXURY) -->
+<div id="view-home">
+<div class="aureum-container">
+        <div class="aureum-glow"></div>
+    <div class="aureum-card">
+
+        <div class="profile-avatar">
+            <img src="assets/avatar.png" alt="Avatar" id="homeAvatarImg">
+        </div>    
+        
+        <h1 id="homeUsername">Username</h1>
+        
+    </div>
+</div>    
+
+<div class="banner-container">
+
+    <div class="banner-glow"></div>
+
+    <div class="banner-card">
+
+        <div class="banner-slider">
+
+            <div class="banner-track">
+                <img src="assets/banner1.jpg" alt="Banner 1">
+                <img src="assets/banner2.jpg" alt="Banner 2">
+                <img src="assets/banner3.jpg" alt="Banner 3">
+                <img src="assets/banner4.jpg" alt="Banner 4">
+                <img src="assets/banner1.jpg" alt="Banner 1">
+            </div>
+
+            <div class="banner-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="quick-actions">
+
+    <!-- RENT -->
+<div class="rent-container" onclick="goToView('rent', document.getElementById('navRent'))" style="cursor:pointer;">
+
+    <div class="rent-card">
+
+        <div class="topup-icon">
+            <img src="assets/RENT.png" alt="Rent">
+        </div>
+
+        <div class="rent-text">
+            <h3>RENT ACCOUNT</h3>
+            <p>Account ijaraga olish</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- TOP UP -->
+    <a href="#" class="topup-container" onclick="return goTo721Shop()">
+
+        <div class="topup-card">
+
+            <div class="topup-icon">
+                <img src="assets/diamond.png" alt="Diamond">
+            </div>
+
+            <div class="topup-text">
+                <h3>TOP UP</h3>
+                <p>Diamond sotib olish</p>
+            </div>
+
+        </div>
+
+    </a>
+
+</div>
+
+</div>
+<!-- /view-home -->
+
+<!-- ============ PROFIL SAHIFASI ============ -->
+<div id="view-profile">
+
+    <div class="aureum-container">
+        <div class="aureum-glow"></div>
+        <div class="aureum-card">
+            <div class="profile-avatar">
+                <img src="assets/avatar.png" alt="Avatar" id="profileAvatarImg">
+            </div>
+            <h1 id="profileUsername">Username</h1>
+        </div>
+    </div>
+
+    <div class="profile-menu">
+        <a href="https://t.me/un10nrent" target="_blank" class="profile-menu-item" id="profileChannelLink">
+            <span class="label">Telegram kanal</span>
+            <span class="chev">❯</span>
+        </a>
+        <a href="https://t.me/why_rain" target="_blank" class="profile-menu-item" id="profileAdminLink">
+            <span class="label">Admin bilan bog'lanish</span>
+            <span class="chev">❯</span>
+        </a>
+    </div>
+
+</div>
+<!-- /view-profile -->
+
+<!-- ============ RENT ACCOUNT SAHIFASI ============ -->
+<div id="view-rent">
+
+<div class="rental-page">
+
+    <div class="rental-card">
+
+        <div class="rental-header">
+
+            <div class="rental-id">
+                AKK #01
+            </div>
+
+            <div class="rental-status available">
+                🟢 BO'SH
+            </div>
+
+        </div>
+
+        <div class="rental-slider">
+
+            <div class="rental-track">
+
+                <img src="assets/account1-1.jpg">
+                <img src="assets/account1-2.jpg">
+                <img src="assets/account1-3.jpg">
+                <img src="assets/account1-4.jpg">
+                <img src="assets/account1-5.jpg">
+
+            </div>
+
+            <div class="rental-dots">
+
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+        <div class="rental-grid">
+
+            <div class="rental-item">
+                <small>MAX RANK</small>
+                <strong>MYTHICAL GLORY</strong>
+            </div>
+
+            <div class="rental-item">
+                <small>6 SOAT</small>
+                <strong>10 000 so'm</strong>
+            </div>
+
+            <div class="rental-item">
+                <small>HEROES</small>
+                <strong>FULL</strong>
+            </div>
+
+            <div class="rental-item">
+                <small>12 SOAT</small>
+                <strong>25 000 so'm</strong>
+            </div>
+
+            <div class="rental-item">
+                <small>MAX STAR</small>
+                <strong>⭐103</strong>
+            </div>
+
+            <div class="rental-item">
+                <small>24 SOAT</small>
+                <strong>35 000 so'm</strong>
+            </div>
+
+        </div>
+
+        <button class="rental-btn" onclick="openAdmin()">
+            ADMIN BILAN BOG'LANISH
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+<!-- /view-rent -->
+
+
+<div class="image-viewer" id="imageViewer">
+    <span class="viewer-close">&times;</span>
+    <img id="viewerImage" src="" alt="">
+</div>
+
+
+<nav class="bottom-nav">
+
+    <a href="#" class="nav-item active" id="navHome" onclick="return goToView('home', this)">
+        <img src="assets/icons/home.png" alt="">
+        <span>Menu</span>
+    </a>
+
+    <a href="#" class="nav-item" id="navDiamond" onclick="return goTo721Shop()">
+        <img src="assets/icons/diamond.png" alt="">
+        <span>Almazlar</span>
+    </a>
+
+    <a href="#" class="nav-item" id="navRent" onclick="return goToView('rent', this)">
+        <img src="assets/icons/rent.png" alt="">
+        <span>Rent</span>
+    </a>
+    
+    <a href="#" class="nav-item" id="navProfile" onclick="return goToView('profile', this)">
+        <img src="assets/icons/profile.png" alt="">
+        <span>Profil</span>
+    </a>
+
+</nav>
+
+<script>
+
+function goToView(view, navEl){
+    document.getElementById('view-home').style.display = (view === 'home') ? 'block' : 'none';
+    document.getElementById('view-profile').style.display = (view === 'profile') ? 'block' : 'none';
+    document.getElementById('view-rent').style.display = (view === 'rent') ? 'block' : 'none';
+
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    if(navEl) navEl.classList.add('active');
+
+    window.scrollTo({top:0, behavior:"auto"});
+    return false; // href="#" sahifani tepaga otkazib yubormasligi uchun
+}
+
+// Telegram profil rasmi va ismini yuklash (mini app sifatida Telegram ichida
+// ochilganda ishlaydi; oddiy brauzerda ochilsa standart rasm/"Username" qoladi)
+function loadTelegramProfile(){
+    const tg = window.Telegram && window.Telegram.WebApp;
+    if(!tg) return;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe && tg.initDataUnsafe.user;
+    if(!user) return;
+
+    const displayName = user.username ? '@' + user.username : (user.first_name || 'Foydalanuvchi');
+
+    const homeName = document.getElementById('homeUsername');
+    const profileName = document.getElementById('profileUsername');
+    if(homeName) homeName.textContent = displayName;
+    if(profileName) profileName.textContent = displayName;
+
+    if(user.photo_url){
+        const homeImg = document.getElementById('homeAvatarImg');
+        const profileImg = document.getElementById('profileAvatarImg');
+        if(homeImg) homeImg.src = user.photo_url;
+        if(profileImg) profileImg.src = user.photo_url;
+    }
+}
+
+loadTelegramProfile();
+
+/* ---------- page-to-page loading transition ---------- */
+(function(){
+  const loader = document.getElementById('pageLoader');
+  // Kirishda: sahifa tayyor bo'lgach loaderni yumshoq yo'qotamiz
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{ loader.classList.add('hide'); }, 350);
+  });
+})();
+
+function navigateWithLoader(url){
+  const loader = document.getElementById('pageLoader');
+  loader.classList.remove('hide');
+  setTimeout(()=>{ window.location.href = url; }, 400);
+  return false;
+}
+
+function goTo721Shop(){
+  return navigateWithLoader('index.html');
+}
+
+
+    const track = document.querySelector('.banner-track');
+const dots = document.querySelectorAll('.dot');
+
+let currentSlide = 0;
+const totalSlides = dots.length;
+
+function showSlide(index) {
+
+    currentSlide = index;
+
+    // Agar 4-rasmdan 1-rasmga qaytsa
+    if (currentSlide === 0) {
+
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0%)';
+
+        // Transitionni qayta yoqamiz
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                track.style.transition = 'transform 0.5s ease';
+            });
+        });
+
+    } else {
+
+        track.style.transition = 'transform 0.5s ease';
+        track.style.transform =
+            `translateX(-${currentSlide * 100}%)`;
+
+    }
+
+    dots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+
+    dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => {
+
+    let nextSlide = currentSlide + 1;
+
+    if (nextSlide >= totalSlides) {
+        nextSlide = 0;
+    }
+
+    showSlide(nextSlide);
+
+}, 4000);
+
+</script>
+
+<script>
+
+function openAdmin(){
+
+    const username = "why_rain";
+
+    if(window.Telegram && Telegram.WebApp){
+
+        Telegram.WebApp.openTelegramLink(
+            "https://t.me/" + username
+        );
+
+    }else{
+
+        window.open(
+            "https://t.me/" + username,
+            "_blank"
+        );
+
+    }
+
+}
+
+</script>
+
+<script>
+
+const rentalTrack = document.querySelector(".rental-track");
+const rentalDots = document.querySelectorAll(".rental-dots span");
+
+if (rentalTrack && rentalDots.length) {
+
+    let current = 0;
+    const total = rentalDots.length;
+
+    function showRentalSlide(index){
+
+        current = index;
+
+        rentalTrack.style.transition = "transform .45s ease";
+        rentalTrack.style.transform =
+            `translateX(-${current * 100}%)`;
+
+        rentalDots.forEach(dot => dot.classList.remove("active"));
+        rentalDots[current].classList.add("active");
+
+    }
+
+    // Auto Slide
+    setInterval(()=>{
+
+        current++;
+
+        if(current >= total){
+            current = 0;
+        }
+
+        showRentalSlide(current);
+
+    },4000);
+
+    // Swipe
+    let startX = 0;
+
+    rentalTrack.addEventListener("touchstart",(e)=>{
+
+        startX = e.touches[0].clientX;
+
+    });
+
+    rentalTrack.addEventListener("touchend",(e)=>{
+
+        let endX = e.changedTouches[0].clientX;
+
+        let diff = startX - endX;
+
+        if(diff > 60){
+
+            current++;
+
+            if(current >= total) current = total-1;
+
+        }
+
+        if(diff < -60){
+
+            current--;
+
+            if(current < 0) current = 0;
+
+        }
+
+        showRentalSlide(current);
+
+    });
+
+}
+
+</script>
+
+<script>
+
+    const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImage");
+const closeViewer = document.querySelector(".viewer-close");
+
+document.querySelectorAll(".rental-track img").forEach(img=>{
+
+    img.addEventListener("click",()=>{
+
+        viewer.classList.add("show");
+        viewerImg.src = img.src;
+
+        scale = 1;
+        viewerImg.style.transform = "scale(1)";
+
+    });
+
+});
+
+closeViewer.onclick=()=>{
+
+    viewer.classList.remove("show");
+
+};
+
+viewer.onclick=(e)=>{
+
+    if(e.target===viewer){
+
+        viewer.classList.remove("show");
+
+    }
+
+};
+
+
+let scale = 1;
+
+viewerImg.addEventListener("wheel",(e)=>{
+
+    e.preventDefault();
+
+    if(e.deltaY<0){
+
+        scale += 0.15;
+
+    }else{
+
+        scale -= 0.15;
+
+    }
+
+    scale=Math.min(Math.max(scale,1),4);
+
+    viewerImg.style.transform=`scale(${scale})`;
+
+});
+</script>
+
+</body>
+</html>
