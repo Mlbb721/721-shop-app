@@ -938,6 +938,32 @@ scale(1.08);
     position:absolute; top:-8px; right:10px; background:var(--gold); color:#0A0A0D;
     font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700;
   }
+
+  /* ---------- horizontal diamond package card (icon | divider | name+price) ---------- */
+  .pkg-card--diamond .pkg-icon{ margin-bottom:0; }
+  .pkg-divider{
+    width:1px; align-self:stretch; min-height:38px;
+    background:linear-gradient(180deg, transparent, rgba(227,185,78,.35), transparent);
+    flex-shrink:0;
+  }
+  .pkg-info{
+    flex:1; min-width:0;
+    display:flex; flex-direction:column; justify-content:center; gap:6px;
+  }
+  .pkg-name-text{
+    font-size:13.5px; font-weight:700; color:#fff; line-height:1.32;
+    word-break:break-word;
+  }
+  .pkg-price-row{
+    display:flex; align-items:baseline; gap:7px; white-space:nowrap; overflow:hidden;
+  }
+  .pkg-old-price{
+    font-size:11px; color:var(--muted); text-decoration:line-through; flex-shrink:0;
+  }
+  .pkg-price-value{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14.5px; color:#F3C75C;
+    white-space:nowrap;
+  }
   .buy-bar{padding:18px 18px 4px;}
   .buy-btn{
     width:100%; background:var(--gold); color:#0A0A0D; border:none; border-radius:14px; padding:15px;
@@ -1605,39 +1631,24 @@ function renderPkgs(){
   g.pkgs.forEach((p,i)=>{
     const card = document.createElement('div');
     const isSpecial = !!p.isSpecial || !p.amt || p.amt === 0;
-    card.className = 'pkg-card' + (selectedPkg===i?' selected':'') + (isSpecial?' pkg-card-special':'');
+    card.className = 'pkg-card pkg-card--diamond' + (selectedPkg===i?' selected':'') + (isSpecial?' pkg-card-special':'');
     card.onclick = ()=>{ selectedPkg=i; renderPkgs(); updateBuyBtn(); };
-    const label = p.name
-      ? `<div class="pkg-amount" style="font-size:13px; line-height:1.3;">${p.name}</div>`
-      : (isSpecial
-          ? `<div class="pkg-amount" style="font-size:13px; line-height:1.3;">${p.badge || 'Maxsus paket'}</div>`
-          : `<div class="pkg-amount">${p.amt.toLocaleString()}</div><div class="pkg-unit">${g.unit}</div>`);
+    const nameText = pkgLabel(p, g.unit);
     card.innerHTML = `
     ${(p.badge && !isSpecial) ? `<div class="pkg-badge">${p.badge}</div>` : ''}
 
-    <div class="pkg-title">
-        ${p.name ? p.name : g.name}
+    <div class="pkg-icon">
+        ${isSpecial ? '💎' : unitIcon}
     </div>
 
-    <div class="pkg-center">
-        <div class="pkg-icon">
-            ${isSpecial ? '💎' : unitIcon}
+    <div class="pkg-divider"></div>
+
+    <div class="pkg-info">
+        <div class="pkg-name-text">${nameText}</div>
+        <div class="pkg-price-row">
+            ${p.originalPrice ? `<span class="pkg-old-price">${p.originalPrice.toLocaleString()} so'm</span>` : ''}
+            <span class="pkg-price-value">${p.price.toLocaleString()} so'm</span>
         </div>
-
-        <div class="pkg-value">
-            ${!isSpecial && p.amt ? p.amt.toLocaleString() : ''}
-        </div>
-    </div>
-
-    ${
-      p.originalPrice
-      ? `<div class="pkg-old-price">${p.originalPrice.toLocaleString()} so'm</div>`
-      : ''
-    }
-
-    <div class="pkg-price">
-        <div class="pkg-price-label">Narxi</div>
-        <div class="pkg-price-value">${p.price.toLocaleString()} so'm</div>
     </div>
 `;
 
