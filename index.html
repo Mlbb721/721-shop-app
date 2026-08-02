@@ -705,33 +705,211 @@ scale(1.08);
     display:flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer; color:var(--text);
   }
   .detail-title{font-size:16px; font-weight:700;}
+  
   .detail-hero{
-    margin:14px 18px; padding:20px; border-radius:20px; background:linear-gradient(135deg,#1D1B12,#15151A);
-    border:1px solid var(--gold-dim); display:flex; align-items:flex-start; gap:14px;
-  }
-  .detail-hero .icon{font-size:38px;}
-  .detail-hero .hname{font-weight:700; font-size:16px;}
-  .detail-hero .hsub{color:var(--muted); font-size:12px; margin-top:2px;}
-  .hbadge-pill{
-    background:var(--gold-dim); color:var(--gold); font-size:9.5px; font-weight:700;
-    padding:3px 9px; border-radius:20px; letter-spacing:0.03em;
+    position:relative;
+    overflow:hidden;
+    margin:16px 18px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1A1815 0%,
+            #121212 55%,
+            #0E0E10 100%
+        );
+
+    border:1px solid rgba(227,185,78,.18);   
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.03);
   }
 
-  .pkg-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 18px;}
-  .pkg-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px;
-    cursor:pointer; position:relative;
-    transition:border-color .18s ease, transform .16s cubic-bezier(.22,1,.36,1), box-shadow .2s ease;
+  .detail-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+
+    radial-gradient(
+      circle at top right,
+      rgba(227,185,78,.12),
+      transparent 45%
+    );
+
+    pointer-events:none;
   }
+
+  .detail-hero::after{
+    content:"";
+    position:absolute;
+    right:-40px;
+    top:-20px;
+    width:170px;
+    height:170px;
+    background:url('ml-watermark.png') center/contain no-repeat;
+    opacity:.05;
+    pointer-events:none;
+  }
+
+  #detailIconImg{
+    width:74px;
+    height:74px;
+    border-radius:20px;
+    border:2px solid rgba(227,185,78,.45);
+    
+    box-shadow:
+        0 0 22px rgba(227,185,78,.18);
+
+    object-fit:cover;
+  }
+
+  .detail-hero .icon{font-size:38px;}
+
+  .detail-hero .hname{    
+    font-family:"Sora",sans-serif;
+    font-size:26px;
+    font-weight:800;
+    color:#FFF;
+    letter-spacing:.2px;
+    margin-bottom:6px;
+  }
+
+  .detail-hero .hsub{
+    font-size:14px;
+    color:#8F8F96;
+    margin-top:2px;
+  }
+ 
+  .hbadge-pill{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 14px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.4px;
+    color:#F3C75C;
+
+    background:
+      linear-gradient(
+      180deg,
+      rgba(227,185,78,.12),
+      rgba(227,185,78,.04)
+      );
+
+    border:1px solid rgba(227,185,78,.25);
+
+    box-shadow:
+        0 0 14px rgba(227,185,78,.08);
+  }
+
+  #detailBadges{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+    flex-wrap:wrap;
+  }
+
+  .pkg-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    padding:0 18px 20px;
+  }
+  
+  .pkg-card{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-height:96px;
+    padding:18px;
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #181818 0%,
+            #111111 100%
+        );
+
+    border:1px solid rgba(227,185,78,.12);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 10px 28px rgba(0,0,0,.35);
+
+    transition:.28s cubic-bezier(.22,1,.36,1);
+  }
+
+  .pkg-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+        circle at top,
+        rgba(227,185,78,.08),
+        transparent 70%
+      );
+
+    pointer-events:none;
+  }
+
+  .pkg-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(227,185,78,.35);
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(227,185,78,.08);
+  }
+
   .pkg-card-special{
     border-color:#8B7CFF; background:linear-gradient(160deg, rgba(139,124,255,0.08), var(--surface));
   }
+
   .pkg-icon{
-    width:34px; height:34px; border-radius:10px; background:var(--gold-dim); color:var(--gold);
-    display:flex; align-items:center; justify-content:center; font-size:16px; margin-bottom:10px;
+    width:54px;
+    height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:
+       linear-gradient(
+        180deg,
+        rgba(227,185,78,.18),
+        rgba(227,185,78,.05)
+      );
+
+    border:1px solid rgba(227,185,78,.25);
+    font-size:24px;
+    box-shadow:
+       0 0 18px rgba(227,185,78,.12);
+
+    flex-shrink:0;
+    margin-bottom:12px;
   }
+
   .pkg-card-special .pkg-icon{ background:rgba(139,124,255,0.18); color:#B3A6FF; }
-  .pkg-card:active{ transform:scale(0.96); }
+  
+  .pkg-card.active{
+    border-color:#E3B94E;
+
+    box-shadow:
+       0 0 0 1px rgba(227,185,78,.35),
+       0 0 24px rgba(227,185,78,.15);
+  }
+
   .pkg-card.selected{
     border-color:var(--gold);
     box-shadow:0 0 0 1px rgba(227,185,78,0.3), 0 6px 18px -6px rgba(227,185,78,0.4);
@@ -740,7 +918,22 @@ scale(1.08);
   @keyframes pkgSelect{ 0%{transform:scale(0.94);} 60%{transform:scale(1.02);} 100%{transform:scale(1);} }
   .pkg-amount{font-family:'JetBrains Mono',monospace; font-weight:600; font-size:16px;}
   .pkg-unit{font-size:11px; color:var(--muted); margin-bottom:8px;}
-  .pkg-price{font-size:14px; font-weight:700; color:var(--gold); font-family:'JetBrains Mono',monospace;}
+
+  .pkg-price{
+    margin-top:8px;
+    font-size:18px;
+    font-weight:700;
+    font-family:"JetBrains Mono";
+    color:#F3C75C;
+  }
+
+  .pkg-name{
+    font-size:15px;
+    font-weight:700;
+    line-height:1.45;
+    color:#FFF;
+  }
+
   .pkg-badge{
     position:absolute; top:-8px; right:10px; background:var(--gold); color:#0A0A0D;
     font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700;
@@ -1200,11 +1393,11 @@ const USERNAME_ONLY_GAMES = ['tgpremium','tgstars'];
 
 // Katalog sahifasidagi reyting, teglar va "ID qayerdan olinadi" yo'riqnomasi
 const GAME_META = {
-  mlbb:      { rating:5,   reviews:1425, badges:['GLOBAL','24/7','BARCHA MINTAQA'], howTo:'Profil → sizning ID (Server bilan)' },
-  pubg:      { rating:5,   reviews:325,  badges:['GLOBAL','24/7'], howTo:"Sozlamalar → Asosiy → ID" },
-  ff:        { rating:4.9, reviews:860,  badges:['GLOBAL','24/7'], howTo:'Profil → sizning ID' },
-  tgpremium: { rating:5,   reviews:210,  badges:['RASMIY','TEZKOR'], howTo:'Telegram username kiriting' },
-  tgstars:   { rating:5,   reviews:150,  badges:['RASMIY','TEZKOR'], howTo:'Telegram username kiriting' },
+  mlbb:      { badges:['UZB','24/7'], howTo:'Profil → sizning ID + (Server bilan)' },
+  pubg:      { badges:['GLOBAL','24/7'], howTo:"Sozlamalar → Asosiy → ID" },
+  ff:        { badges:['GLOBAL','24/7'], howTo:'Profil → sizning ID' },
+  tgpremium: { badges:['RASMIY','TEZKOR'], howTo:'Telegram username kiriting' },
+  tgstars:   { badges:['RASMIY','TEZKOR'], howTo:'Telegram username kiriting' },
 };
 
 const UNIT_ICONS = { Diamond:'💎', UC:'🪙', Stars:'⭐', oy:'📨' };
@@ -1377,9 +1570,7 @@ function openDetail(key){
 
   const meta = GAME_META[key] || {};
   document.getElementById('detailSub').textContent = meta.howTo || 'ID kiritib, paket tanlang';
-  document.getElementById('detailRating').innerHTML = meta.rating
-    ? `★ ${meta.rating} · ${(meta.reviews||0).toLocaleString()} baho`
-    : '';
+  
   document.getElementById('detailBadges').innerHTML = (meta.badges||[])
     .map(b=>`<span class="hbadge-pill">${b}</span>`).join('');
 
@@ -1421,13 +1612,38 @@ function renderPkgs(){
       : (isSpecial
           ? `<div class="pkg-amount" style="font-size:13px; line-height:1.3;">${p.badge || 'Maxsus paket'}</div>`
           : `<div class="pkg-amount">${p.amt.toLocaleString()}</div><div class="pkg-unit">${g.unit}</div>`);
-    card.innerHTML = `${(p.badge && !isSpecial)?`<div class="pkg-badge">${p.badge}</div>`:''}
-      <div class="pkg-icon">${isSpecial ? '⭐' : unitIcon}</div>
-      ${label}
-      ${p.originalPrice?`<div style="text-decoration:line-through; color:var(--muted); font-size:10.5px;">${p.originalPrice.toLocaleString()}</div>`:''}
-      <div class="pkg-price">${p.price.toLocaleString()} so'm</div>`;
-    grid.appendChild(card);
-  });
+    card.innerHTML = `
+    ${(p.badge && !isSpecial) ? `<div class="pkg-badge">${p.badge}</div>` : ''}
+
+    <div class="pkg-title">
+        ${p.name ? p.name : g.name}
+    </div>
+
+    <div class="pkg-center">
+        <div class="pkg-icon">
+            ${isSpecial ? '💎' : unitIcon}
+        </div>
+
+        <div class="pkg-value">
+            ${!isSpecial && p.amt ? p.amt.toLocaleString() : ''}
+        </div>
+    </div>
+
+    ${
+      p.originalPrice
+      ? `<div class="pkg-old-price">${p.originalPrice.toLocaleString()} so'm</div>`
+      : ''
+    }
+
+    <div class="pkg-price">
+        <div class="pkg-price-label">Narxi</div>
+        <div class="pkg-price-value">${p.price.toLocaleString()} so'm</div>
+    </div>
+`;
+
+grid.appendChild(card);
+
+});
 }
 
 function updateBuyBtn(){
@@ -1722,7 +1938,6 @@ initApp();
 /* ---------- page-to-page loading transition ---------- */
 (function(){
   const loader = document.getElementById('pageLoader');
-  // Kirishda: sahifa tayyor bo'lgach loaderni yumshoq yo'qotamiz
   window.addEventListener('load', ()=>{
     setTimeout(()=>{ loader.classList.add('hide'); }, 350);
   });
