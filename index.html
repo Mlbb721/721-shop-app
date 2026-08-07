@@ -851,6 +851,16 @@ scale(1.08);
     transition:.28s cubic-bezier(.22,1,.36,1);
   }
 
+  /* ---------- ajratilgan (highlight) mahsulot uchun animatsiyali porlash ---------- */
+  .pkg-card.pkg-highlight{
+    border:1px solid var(--hl-color, #F3C75C);
+    animation: pkgHighlightGlow 1.8s ease-in-out infinite;
+  }
+  @keyframes pkgHighlightGlow{
+    0%,100%{ box-shadow: 0 0 6px 0 var(--hl-color, #F3C75C), inset 0 0 0 1px var(--hl-color, #F3C75C); }
+    50%{ box-shadow: 0 0 18px 3px var(--hl-color, #F3C75C), inset 0 0 0 1px var(--hl-color, #F3C75C); }
+  }
+
   .pkg-card::before{
     content:"";
     position:absolute;
@@ -1496,7 +1506,7 @@ async function loadGames(){
     data.forEach(g=>{
       games[g.key] = {
         name: g.name, icon: g.icon, unit: g.unit,
-        pkgs: g.packages.map(p=>({ id:p.id, amt:p.amount, name:p.name, isSpecial:!!p.is_special, price:p.price, originalPrice:p.original_price, badge:p.badge }))
+        pkgs: g.packages.map(p=>({ id:p.id, amt:p.amount, name:p.name, isSpecial:!!p.is_special, price:p.price, originalPrice:p.original_price, badge:p.badge, highlight_color:p.highlight_color }))
       };
     });
     usingBackend = true;
@@ -1635,7 +1645,8 @@ function renderPkgs(){
   g.pkgs.forEach((p,i)=>{
     const card = document.createElement('div');
     const isSpecial = !!p.isSpecial || !p.amt || p.amt === 0;
-    card.className = 'pkg-card pkg-card--diamond' + (selectedPkg===i?' selected':'') + (isSpecial?' pkg-card-special':'');
+    card.className = 'pkg-card pkg-card--diamond' + (selectedPkg===i?' selected':'') + (isSpecial?' pkg-card-special':'') + (p.highlight_color?' pkg-highlight':'');
+    if(p.highlight_color) card.style.setProperty('--hl-color', p.highlight_color);
     card.onclick = ()=>{ selectedPkg=i; renderPkgs(); updateBuyBtn(); };
     const nameText = pkgLabel(p, g.unit);
     card.innerHTML = `
