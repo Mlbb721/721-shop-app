@@ -218,17 +218,30 @@
     background:var(--surface-2); flex:0 0 auto; overflow:hidden;
     box-shadow:0 0 14px rgba(227,185,78,0.28);
   }
-
   .hero-avatar{
-
-   width:58px;
-   height:58px;
-   border-radius:50%;
-   overflow:hidden;
-   border:2px solid rgba(227,185,78,.7);
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid rgba(227,185,78,.7);
     box-shadow:
-    0 0 0 4px rgba(227,185,78,.08),
-    0 0 22px rgba(227,185,78,.22);
+      0 0 0 4px rgba(227,185,78,.08),
+      0 0 22px rgba(227,185,78,.22);
+    flex:0 0 58px;
+    position:relative;
+  }
+
+  .hero-avatar img{
+    display:block;
+    width:100%;
+    height:100%;
+    min-width:100%;
+    min-height:100%;
+    max-width:none;
+    max-height:none;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center;
   }
 
   .hero-greet{
@@ -1477,7 +1490,17 @@ function setupAvatar(){
   document.getElementById('heroName').textContent = (tgUser && tgUser.first_name) || 'Foydalanuvchi';
   if(!url) return;
   const hero = document.getElementById('heroAvatar');
-  hero.innerHTML = `<img src="${url}" alt="">`;
+  hero.innerHTML = '';
+
+  const img = document.createElement('img');
+  img.src = url;
+  img.alt = '';
+  img.loading = 'eager';
+  img.decoding = 'async';
+  img.onerror = () => {
+    hero.textContent = '👤';
+  };
+  hero.appendChild(img);
 }
 
 const BANNER_IMAGES = ['banner1.jpg','banner2.jpg','banner3.jpg'];
