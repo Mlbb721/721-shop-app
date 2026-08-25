@@ -1377,7 +1377,7 @@ to{
     </label>
     <input type="file" id="receiptFile" accept="image/*" style="display:none;" onchange="onReceiptSelected()">
 
-    <button class="btn btn-primary" onclick="submitTopup()">So'rov yuborish</button>
+    <button id="topupSubmitBtn" class="btn btn-primary" onclick="submitTopup()">So'rov yuborish</button>
     <p style="text-align:center; margin-top:12px; color:var(--muted); font-size:12px; cursor:pointer;" onclick="closeOverlay('topupOverlay')">Bekor qilish</p>
   </div>
 </div>
@@ -1764,6 +1764,15 @@ function closeOverlay(id){ document.getElementById(id).classList.remove('open');
 function openTopupSheet(){
   document.getElementById('cardNumberText').textContent = cardInfo.card_number || '—';
   document.getElementById('cardOwnerText').textContent = cardInfo.card_owner || '';
+
+  // Har bir yangi balans oynasida yangi so'rov yuborish mumkin.
+  topupSubmitting = false;
+  const topupBtn = document.getElementById('topupSubmitBtn');
+  if(topupBtn){
+    topupBtn.disabled = false;
+    topupBtn.textContent = "So'rov yuborish";
+  }
+
   openOverlay('topupOverlay');
 }
 function copyCard(){
@@ -1778,6 +1787,7 @@ function openAdminChat(){
 }
 
 let selectedReceiptFile = null;
+let topupSubmitting = false;
 function onReceiptSelected(){
   const input = document.getElementById('receiptFile');
   if(input.files && input.files[0]){
@@ -1814,9 +1824,19 @@ async function checkPlayer(){
 }
 
 async function submitTopup(){
+  // Bir vaqtning o'zida faqat bitta so'rov yuboriladi.
+  if(topupSubmitting) return;
+
   const amt = Number(document.getElementById('topupAmount').value);
   if(!amt || amt<=0){ showToast('⚠️ Summani kiriting'); return; }
   if(!selectedReceiptFile){ showToast('⚠️ To\'lov screenshotini yuklang'); return; }
+
+  const topupBtn = document.getElementById('topupSubmitBtn');
+  topupSubmitting = true;
+  if(topupBtn){
+    topupBtn.disabled = true;
+    topupBtn.textContent = 'Yuborilmoqda...';
+  }
 
   if(usingBackend && tgUser){
     try{
@@ -1825,10 +1845,21 @@ async function submitTopup(){
       fd.append('amount', amt);
       fd.append('receipt', selectedReceiptFile);
       const res = await fetch(`${API_BASE}/topup-request`, { method:'POST', body: fd });
-      if(!res.ok){ showToast('⚠️ Xatolik yuz berdi'); return; }
-    }catch(e){ showToast('⚠️ Xatolik yuz berdi, birozdan so\'ng urinib ko\'ring'); return; }
+      if(!res.ok){
+        topupSubmitting = false;
+        if(topupBtn){ topupBtn.disabled = false; topupBtn.textContent = "So'rov yuborish"; }
+        showToast('⚠️ Xatolik yuz berdi');
+        return;
+      }
+    }catch(e){
+      topupSubmitting = false;
+      if(topupBtn){ topupBtn.disabled = false; topupBtn.textContent = "So'rov yuborish"; }
+      showToast('⚠️ Xatolik yuz berdi, birozdan so\'ng urinib ko\'ring');
+      return;
+    }
   }
 
+  // Muvaffaqiyatli yuborilgandan keyin tugma shu oynada qayta bosilmaydi.
   closeOverlay('topupOverlay');
   showToast("✅ So'rov yuborildi — admin tasdiqlaydi");
   document.getElementById('topupAmount').value='';
